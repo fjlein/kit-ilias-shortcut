@@ -73,7 +73,6 @@ export const GET: RequestHandler = async ({ url }) => {
     }
 
     // Step 1: Check exact match in abbreviations
-
     const ilias_base: string =
         "https://ilias.studium.kit.edu/ilias.php?baseClass=ilrepositorygui";
 
@@ -89,11 +88,10 @@ export const GET: RequestHandler = async ({ url }) => {
     );
 
     if (partialMatch) {
-        redirect(307, ilias_base + partialMatch.id);
+        redirect(307, ilias_base + "&ref_id=" + partialMatch.id);
     }
 
     // Step 3: redirection or error display
-
     if (result.data.redirectHome) {
         redirect(307, ilias_base);
     }
