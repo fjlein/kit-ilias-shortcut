@@ -72,13 +72,13 @@ export const GET: RequestHandler = async ({ url }) => {
         return json({ errors: result.error.issues }, { status: 400 });
     }
 
-    // Step 1: Check exact match in abbreviations
     const ilias_base: string =
-        "https://ilias.studium.kit.edu/ilias.php?baseClass=ilrepositorygui";
+        "https://ilias.studium.kit.edu/ilias.php?baseClass=ilrepositorygui&ref_id=";
 
+    // Step 1: Check exact match in abbreviations
     for (const module of result.data.db) {
         if (module.abbr?.includes(result.data.search)) {
-            redirect(307, ilias_base + "&ref_id=" + module.id);
+            redirect(307, ilias_base + module.id);
         }
     }
 
@@ -88,12 +88,15 @@ export const GET: RequestHandler = async ({ url }) => {
     );
 
     if (partialMatch) {
-        redirect(307, ilias_base + "&ref_id=" + partialMatch.id);
+        redirect(307, ilias_base + partialMatch.id);
     }
 
     // Step 3: redirection or error display
     if (result.data.redirectHome) {
-        redirect(307, ilias_base);
+        redirect(
+            307,
+            "https://ilias.studium.kit.edu/ilias.php?baseClass=ilmembershipoverviewgui"
+        );
     }
 
     return json(
