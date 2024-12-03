@@ -49,6 +49,10 @@
     code {
         @apply text-sm py-[0.2rem] px-[0.3rem] border-0 rounded-sm bg-muted;
     }
+
+    a {
+        @apply underline underline-offset-4;
+    }
 }
 
 @layer utilities {
