@@ -26,9 +26,10 @@
                     >
                         omnibox
                     </a> followed by a search query. This search query will redirect
-                    you to one of your Ilias courses. The search query can either
-                    be an exact match with a previously specified abbreviation or
-                    a prefix of a course name.
+                    you to one of your Ilias courses. The query can either be an
+                    exact match with a previously specified abbreviation or a prefix
+                    of a course name. All data is stored in your custom link. The
+                    API just redirects based on the query.
                 </p></Accordion.Content
             >
         </Accordion.Item>

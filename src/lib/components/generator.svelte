@@ -9,6 +9,7 @@
     import Checkbox from "$lib/components/ui/checkbox/checkbox.svelte";
     import { z } from "zod";
     import { scale } from "svelte/transition";
+    import omnibox from "$lib/assets/omnibox.gif";
 
     let redirectHome: boolean = $state(true);
     let htmlInput: string = $state("");
@@ -241,17 +242,19 @@
             >
             and scroll down to site search. Press on add and fill out the form. The
             first field <code>name</code> specifies the display name when the
-            shortcut is selected or about to be (e.g. "Ilias"). The field
+            shortcut is selected or about to be. The field
             <code>shortcut</code> specifies the shortcut you have to type to be
-            able to search (e.g. "i"). In the <code>url</code> field you paste the
-            copied link.
+            able to search. In the <code>url</code> field you paste the copied link.
         </p></Step
     >
 
-    <Step stepTitle="Finally do an omnibox search"
-        ><p class="leading-7">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
-            laudantium consectetur ipsam?
-        </p></Step
-    >
+    <div id="demo"></div>
+    <Step stepTitle="Execute your first omnibox search">
+        <p>
+            In this case <code>swt</code> is specified as an abbreviation for
+            the course "Softwaretechnik II". The name of the custom site search
+            is <code>Ilias</code> and the shortcut is <code>i</code>.
+        </p>
+        <img alt="omnibox search" src={omnibox} class="w-full mt-3" />
+    </Step>
 </Steps>
