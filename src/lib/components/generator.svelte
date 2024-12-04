@@ -255,6 +255,10 @@
             the course "Softwaretechnik II". The name of the custom site search
             is <code>Ilias</code> and the shortcut is <code>i</code>.
         </p>
-        <img alt="omnibox search" src={omnibox} class="w-full mt-3" />
+        <img
+            alt="omnibox search"
+            src={omnibox}
+            class="w-full mt-3 border-0 rounded-md"
+        />
     </Step>
 </Steps>
