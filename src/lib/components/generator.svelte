@@ -149,7 +149,7 @@
         </div>
     </Step>
 
-    <Step stepTitle="Edit courses &amp; add shortcuts">
+    <Step stepTitle="Edit courses and add shortcuts">
         {#if courses.length > 0}
             <p class="leading-7">
                 You can now change a course's name, delete a course and add
@@ -249,7 +249,7 @@
     >
 
     <div id="demo"></div>
-    <Step stepTitle="Execute your first search">
+    <Step stepTitle="Execute your first omnibox search">
         <p>
             In this case <code>swt</code> is specified as an abbreviation for
             the course "Softwaretechnik II". The name of the custom site search
