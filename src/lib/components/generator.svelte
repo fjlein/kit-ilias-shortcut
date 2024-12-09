@@ -16,25 +16,23 @@
     let copied: boolean = $state(false);
     let parsed: boolean = $state(false);
 
-    const coursesSchema = z.array(
-        z.object({
-            id: z.number().int().nonnegative(),
-            name: z.string().min(1),
-            abbr: z.array(z.string().min(1)),
-            abbrInput: z.string(),
-            nameInit: z.string().min(1),
-        })
-    );
+    const CourseSchema = z.object({
+        id: z.number().int().nonnegative(),
+        name: z.string().min(1),
+        abbr: z.array(z.string().min(1)),
+        abbrInput: z.string(),
+        nameInit: z.string().min(1),
+    });
 
-    type Courses = z.infer<typeof coursesSchema>;
+    type Course = z.infer<typeof CourseSchema>;
 
-    let courses: Courses = $state([]);
+    let courses: Course[] = $state([]);
 
     function deleteCourse(id: number) {
         courses = courses.filter((course) => course.id !== id);
     }
 
-    function parseHtmlInput(): Courses | null {
+    function parseHtmlInput(): Course[] | null {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlInput, "text/html");
 
@@ -86,7 +84,7 @@
         courses.forEach((course) => {
             if (!course.name) course.name = course.nameInit;
         });
-        const result = coursesSchema.safeParse(courses);
+        const result = z.array(CourseSchema).safeParse(courses);
         console.log(result);
         if (result.success) return;
         alert("Unexpected error");
